@@ -21,14 +21,15 @@ function handleResult(winner) {
     // Return a string decaring the corresponding winner
 
     if (winner === "tie") {
-        return "It's a tie!"
+        console.log("It's a tie!")
     }
     else if (winner === "computer") {
-        return "Computer wins!"
+        console.log("Computer wins this round!")
     }
     else {
-        return "Player wins!"
+        console.log("Player wins this round!")
     }
+    return winner
 };
 
 
@@ -88,5 +89,38 @@ function playRound (playerSelection) {
     
 };
 
-// Play a round, player always picks rock, because rock always wins.
-console.log(playRound("rock"));
+
+function game(n) {
+    // Store scores here
+    let player = 0;
+    let computer = 0;
+
+    for (let i = 0; i < n; i++) {
+        let playerChoice = prompt("Rock, paper or scissors?").toLowerCase();
+        
+        let roundWinner = playRound(playerChoice);
+
+        // Update scores
+        if (roundWinner === "player") {
+            player++;
+        }
+        else if (roundWinner === "computer") {
+            computer++;
+        }
+        
+        // Display current score in console
+        console.log("Player: " + player + "\n" + "Computer: " + computer)
+    }
+    
+    // If game is not tied, display winner
+    if (!(player === computer)) {
+        return player > computer ? "Player wins!" : "Computer wins!";
+    }
+    else {
+        return "Tied Game!"
+    }     
+};
+
+
+// Play five rounds
+console.log(game(5));
