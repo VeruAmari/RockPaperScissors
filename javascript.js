@@ -84,43 +84,48 @@ function getWinner (com, p1) {
 
 function playRound (playerSelection) {
     let computerSelection = getComputerChoice();
+    let playerInput = (getPlayerInput(playerSelection))
+    let winner = getWinner(computerSelection, playerInput)
 
-    return(getWinner(computerSelection, playerSelection));
-    
+    updateGameStatus(winner);
 };
 
 
-function game(n) {
+function getPlayerInput(e){
+    return e.target.id;
+    //game(1, playerInput);
+};
+
+
+function updateGameStatus(roundWinner) {
     // Store scores here
-    let player = 0;
-    let computer = 0;
-
-    for (let i = 0; i < n; i++) {
-        let playerChoice = prompt("Rock, paper or scissors?").toLowerCase();
-        
-        let roundWinner = playRound(playerChoice);
-
-        // Update scores
-        if (roundWinner === "player") {
-            player++;
-        }
-        else if (roundWinner === "computer") {
-            computer++;
-        }
-        
-        // Display current score in console
-        console.log("Player: " + player + "\n" + "Computer: " + computer)
-    }
+    let rounds = document.getElementById('roundsPlayed');
+    let player = document.getElementById('playerScore');
+    let computer = document.getElementById('computerScore');
     
-    // If game is not tied, display winner
-    if (!(player === computer)) {
-        return player > computer ? "Player wins!" : "Computer wins!";
+    console.log(rounds, player, computer)
+
+    // Update scores
+    if (roundWinner === "player") {
+        player++;
     }
-    else {
-        return "Tied Game!"
-    }     
+    else if (roundWinner === "computer") {
+        computer++;
+    }
+    //rounds++;
+    
+    // Display current score in console
+         
 };
 
+let buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', playRound));
 
-// Play five rounds
-console.log(game(5));
+/*
+
+New Pseudocode for game:
+When player first opens the page, set up a game status variable.
+Display current game status underneath clickable options, starting scores are 0.
+Update status after each round is played, (except on tie) until 5 rouds have been played.
+ 
+*/
