@@ -97,6 +97,21 @@ function getPlayerInput(e){
 };
 
 
+function announceWinner(winner) {
+    let setWinner = document.querySelector('#winner');
+    setWinner.innerText = (winner + ' Wins!');
+    
+    resetScores();
+};
+
+
+function resetScores() {
+    document.querySelector('#roundsPlayed').innerText = '0';
+    document.querySelector('#playerScore').innerText = '0';
+    document.querySelector('#computerScore').innerText = '0';
+};
+
+
 function updateGameStatus(roundWinner) {
     // Store scores here
     let roundsPlayed = document.querySelector('#roundsPlayed');
@@ -115,8 +130,16 @@ function updateGameStatus(roundWinner) {
         computer++;
         computerScore.innerText = computer;
     }
+
+    // Update rounds count
     rounds++;
     roundsPlayed.innerText = rounds;
+
+    // Announce a winner at a score of 5
+    if (+player> 4 || +computer > 4) {
+        
+        +player > +computer ? announceWinner('Player') : announceWinner('Computer');
+    };
 
 };
 
