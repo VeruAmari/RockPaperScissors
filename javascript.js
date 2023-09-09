@@ -99,23 +99,25 @@ function getPlayerInput(e){
 
 function updateGameStatus(roundWinner) {
     // Store scores here
-    let rounds = document.getElementById('roundsPlayed');
-    let player = document.getElementById('playerScore');
-    let computer = document.getElementById('computerScore');
+    let roundsPlayed = document.querySelector('#roundsPlayed');
+    let playerScore = document.querySelector('#playerScore');
+    let computerScore = document.querySelector('#computerScore');
     
-    console.log(rounds, player, computer)
-
+    let rounds = roundsPlayed.textContent;
+    let player = playerScore.textContent;
+    let computer = computerScore.textContent;
     // Update scores
     if (roundWinner === "player") {
         player++;
+        playerScore.innerText = player;
     }
     else if (roundWinner === "computer") {
         computer++;
+        computerScore.innerText = computer;
     }
-    //rounds++;
-    
-    // Display current score in console
-         
+    rounds++;
+    roundsPlayed.innerText = rounds;
+
 };
 
 let buttons = document.querySelectorAll('button');
