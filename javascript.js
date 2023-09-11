@@ -17,7 +17,7 @@ function getComputerChoice (playerChoice) {
     */
     
     let new_choices = [];
-
+    
     CHOICES.forEach((element) => (element === playerChoice) ? console.log("Avoiding", element) : new_choices.push(element));
     // Pick randomly between rock paper and scissors
     return new_choices[getIndex(2)];
