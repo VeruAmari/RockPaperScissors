@@ -4,22 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="javascript.js" defer></script>
-    <link src="stylesheet.css" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <div class="container">
-        <button class="choiceMaker" id="rock">Rock</button>
-        <button class="choiceMaker" id="paper">Paper</button>
-        <button class="choiceMaker" id="scissors">Scissors</button>
+    <div class="left container"></div>
+    <div class="center container">
+        <h1 class="title container">Rock - Paper - Scissors</h1>
+        
+        <h2 class="title container">First to reach 5 points wins!</h2>
+        <div class="general container">
+            <h3 class="info container">Rounds Played: <span id="roundsPlayed">0</span></h3>
+            <div class="first container">
+                <button class="choiceMaker" id="rock">🪨</button>
+                <button class="choiceMaker" id="paper">📜</button>
+                <button class="choiceMaker" id="scissors">✂️</button>
+            </div>
+            <div class="second container" id="results">
+                    
+                    <div class="info">- Score -</div>
+                    <div class="info">Player: <span id="playerScore">0</span></div>
+                    <div class="info">Computer: <span id="computerScore">0</span></div>
+            </div>
+        </div>
+        <div class="title winner container" id="winner">_</div>
     </div>
-    <div class="container" id="results">
-            <div class="info" >Round: <span id="roundsPlayed">0</span></div>
-            <div id="winner">First to reach 5 points wins!</div>
-            <div class="info">Score:</div>
-            <div class="info">Player: <span id="playerScore">0</span></div>
-            <div class="info">Computer: <span id="computerScore">0</span></div>
-    </div>
-
+    <div class="right container"></div>
 </body>
 </html>

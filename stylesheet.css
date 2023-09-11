@@ -1,0 +1,98 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.general.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 500px;
+    max-width: 1000px;
+    flex: 0 0 150px;
+    gap: 25px;
+    padding: 15px;
+}
+
+.left.container,
+.right.container {
+    flex-basis: 50vw;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+
+.center.container {
+    justify-content: center;
+    padding-bottom: 100px;
+    flex-direction: column;
+    flex-basis: 50vw;
+    flex-grow: 2;
+    flex-shrink: 1;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    gap: 25px;
+    flex-shrink: 1;
+}
+
+.choiceMaker {
+    padding-top: 15px;
+    font-size: 80px;
+    border: 0;
+    border-radius: 100%;
+    padding: 10px;
+    padding-top: 30px;
+}
+
+.second.container {
+    flex-direction: column;
+}
+
+.info {
+    font-size: 25px;
+}
+
+.title {
+    padding: 5px 15px;
+}
+.general.container, .title {
+    border-radius: 20px;
+}
+
+.winner {
+    font-size: 40px;
+}
+
+/* Colors */
+* {
+    color: #f25f8b;
+}
+body {
+    background-color: #c5e8db;
+}
+.general.container, .title {
+    border: 5px #f25f8b dotted;
+}
+.choiceMaker {
+    background-color: #ff9ab8;
+}
+.choiceMaker:hover {
+    background-color: #f25f8b;
+}
+.center .container {
+    background-color: #ffdae6;
+}
