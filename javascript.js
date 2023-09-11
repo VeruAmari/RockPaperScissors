@@ -10,9 +10,17 @@ function getIndex (n) {
 };
 
 
-function getComputerChoice () {
+function getComputerChoice (playerChoice) {
+    /*
+    takes in a string playerChoice, to be
+    removed from computer's list of choices
+    */
+    
+    let new_choices = [];
+
+    CHOICES.forEach((element) => (element === playerChoice) ? console.log("Avoiding", element) : new_choices.push(element));
     // Pick randomly between rock paper and scissors
-    return CHOICES[getIndex(3)];
+    return new_choices[getIndex(2)];
 };
 
 
@@ -83,8 +91,8 @@ function getWinner (com, p1) {
 
 
 function playRound (playerSelection) {
-    let computerSelection = getComputerChoice();
     let playerInput = (getPlayerInput(playerSelection))
+    let computerSelection = getComputerChoice(playerInput);
     let winner = getWinner(computerSelection, playerInput)
 
     updateGameStatus(winner);
