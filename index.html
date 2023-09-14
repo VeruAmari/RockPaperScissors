@@ -20,14 +20,25 @@
                 <button class="choiceMaker" id="paper">📜</button>
                 <button class="choiceMaker" id="scissors">✂️</button>
             </div>
+            <span id="status"></span>
+            <div class="info scores">Scores</div>
             <div class="second container" id="results">
                     
-                    <div class="info">- Score -</div>
-                    <div class="info">Player: <span id="playerScore">0</span></div>
-                    <div class="info">Computer: <span id="computerScore">0</span></div>
+                    <div class="info scores playerscore container">
+                        <div class="info">Player</div>
+                        <div class="info" id="playerScore">0</div>
+                    </div>
+                    
+                    <div class="info scores computerscore container">
+                        <div class="info ">Computer</div>
+                        <div class="info" id="computerScore">0</div>
+                    </div>
             </div>
         </div>
-        <div class="title winner container" id="winner">_</div>
+        <div class="title winner container">
+            <span id="winner"></span>
+            <button class="invisible" id="playAgain">Play Again</button>
+        </div>
     </div>
     <div class="right container"></div>
 </body>

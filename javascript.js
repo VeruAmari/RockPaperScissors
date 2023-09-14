@@ -9,6 +9,10 @@ function getIndex (n) {
     return index;
 };
 
+function updateStatus (e) {
+    const status = document.querySelector('#status');
+    status.textContent = e;
+}
 
 function getComputerChoice (playerChoice) {
     /*
@@ -35,51 +39,60 @@ function handleResult(winner) {
         console.log("Computer wins this round!")
     }
     else {
-        console.log("Player wins this round!")
+        console.log("You win this round!")
     }
     return winner
 };
 
-
+// ✂️📜🪨
 function getWinner (com, p1) {
 
     // Based on computer and player choices, determine who wins
     // and then handle the result accordingly
-
+    let c = '';
     switch(com) {
         case ("rock"):
+            c = "Computer picked 🪨 and ";
             switch(p1) {
                 case ("rock"):
                     // Both picked the same, it's a tie
                     return handleResult("tie");
                 case ("paper"):
                     // Rock loses against paper so player wins
+                    updateStatus(c + "lost against your 📜!")
                     return handleResult("player");
                 case ("scissors"):
                     // Rock beats scissors so computer wins
+                    updateStatus("Oh no! " + c + "beat your ✂️!")
                     return handleResult("computer");
             }
             break;
         case ("paper"):
+            c = "Computer picked 📜 and ";
             switch(p1) {
                 case ("rock"):
                     // Paper beats rock so computer wins
+                    updateStatus("Oh no! " + c + "beat your 🪨!")
                     return handleResult("computer");
                 case ("paper"):
                     // Both picked the same, it's a tie
                     return handleResult("tie");
                 case ("scissors"):
                     // Paper loses against scissors so player wins
+                    updateStatus(c + "lost against your ✂️!")
                     return handleResult("player");
             }
             break;
         case ("scissors"):
+            c = "Computer picked ✂️ and ";
             switch(p1) {
                 case ("rock"):
                     // Scissor loses against rock so player wins
+                    updateStatus(c + "lost against your 🪨");
                     return handleResult("player");
                 case ("paper"):
                     // Scissor beats paper so computer wins
+                    updateStatus("Oh no! " + c + "beat your 📜!")
                     return handleResult("computer");
                 case ("scissors"):
                     // Both picked the same, it's a tie
@@ -107,9 +120,19 @@ function getPlayerInput(e){
 
 function announceWinner(winner) {
     let setWinner = document.querySelector('#winner');
-    setWinner.innerText = (winner + ' Wins!');
-    
-    resetScores();
+    if (winner === 'Computer') {
+        setWinner.innerText = (winner + ' wins the match!');
+    } else {
+        setWinner.innerText = ('You win the match!')
+    }
+
+    let buttons = document.querySelectorAll('.choiceMaker')
+
+    buttons.forEach((button)=> {
+        button.removeEventListener('mousedown', playRound, false);
+    })
+    document.querySelector("#playAgain").classList.toggle("invisible");
+
 };
 
 
@@ -117,6 +140,8 @@ function resetScores() {
     document.querySelector('#roundsPlayed').innerText = '0';
     document.querySelector('#playerScore').innerText = '0';
     document.querySelector('#computerScore').innerText = '0';
+    document.querySelector('#winner').innerText = '';
+    document.querySelector('#status').innerText = '';
 };
 
 
@@ -151,9 +176,21 @@ function updateGameStatus(roundWinner) {
 
 };
 
-let buttons = document.querySelectorAll('button');
-buttons.forEach(button => button.addEventListener('click', playRound));
+function activateChoices () {
+    let buttons = document.querySelectorAll('.choiceMaker');
+    buttons.forEach(button => button.addEventListener('mousedown', playRound));
+}
 
+function playAgain () {
+    resetScores();
+    activateChoices();
+    document.querySelector("#playAgain").classList.toggle("invisible");
+}
+
+let playAgainButton = document.querySelector("#playAgain");
+playAgainButton.addEventListener('mousedown', playAgain);
+
+activateChoices();
 /*
 
 New Pseudocode for game:
